@@ -1,20 +1,57 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ASpell.cpp                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lhasmi <lhasmi@student.42heilbronn.de>     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/12/03 11:17:43 by lhasmi            #+#    #+#             */
+/*   Updated: 2023/12/03 13:03:28 by lhasmi           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-// In the Warlock class, the switch statement is FORBIDDEN and its use would
-// result in a -42.
+#innclude "ASpell.hpp"
 
-// Create an abstract class called ASpell, in Coplien's form, that has the
-// following protected attributes:
+ASpell::ASpell(){}
 
-// * name (string)
-// * effects (string)
 
-// Both will have getters (getName and getEffects) that return strings.
+ASpell::ASpell(std::string const& name, std::string const& effects): name (name), effects(effects){
+}
 
-// Also add a clone pure method that returns a pointer to ASpell.
+ASpell::ASpell(ASpell const& copy){
+	*this = copy;
+}
 
-// All these functions can be called on a constant object.
+ASpell& ASpell::operator=(ASpell const& assignment) 
+{
+    if (this == &assignment)
+        return *this;
+    std::string tempName = assignment.name;
+    std::string tempEffects = assignment.effects;
+    name = tempName;
+    effects = tempEffects;
+    return (*this);
+}
 
-// ASpell has a constructor that takes its name and its effects, in that order.
+ASpell:: ~ASpell();
+
+std::string const& ASpell::getName()const
+{
+	return(this->name);
+}
+
+std::string const& ASpell::getEffects()const;
+{
+	return(this->effects);
+}
+
+// This one will simply call the getHitBySpell of the passed object, passing the
+// current instance as parameter.
+void ASpell::launch(ATarget const& atarget_ref) const{
+	atarget_ref.getHitBySpell((*this));
+}
+
+
 
 // Now you will create an ATarget abstract class, in Coplien's form. It has a type
 // attribute, which is a string, and its associated getter, getType, that return a
