@@ -6,15 +6,17 @@
 /*   By: lhasmi <lhasmi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 19:10:32 by lhasmi            #+#    #+#             */
-/*   Updated: 2023/12/07 18:53:31 by lhasmi           ###   ########.fr       */
+/*   Updated: 2023/12/07 20:12:45 by lhasmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef WARLOCK_HPP
-# define WARLOCK_HPP
+#pragma once
 
 #include<iostream>
 #include<string>
+#include "ASpell.hpp"
+#include "ATarget.hpp"
+#include<map>
 // Add to the Warlock the following member functions:
 
 // * learnSpell, takes a pointer to ASpell, that makes the Warlock learn a spell
@@ -31,14 +33,24 @@ class Warlock
 	public:
 		Warlock(std::string const & name, std::string const & title);
 		~Warlock();
+
 		std::string const & getName() const;
 		std::string const & getTitle() const;
+
 		void setTitle(std::string const &other);
 		void introduce() const;
+
+		void learnSpell(ASpell *aspell_pt);
+		void forgetSpell(std::string spell_name);
+		void launchSpell(std::string  spell_name, ATarget const & atarget_ref);
 
 	private:
 		std::string name;
 		std::string title;
-};
 
-#endif
+		Warlock();
+		Warlock(Warlock const &other);
+		Warlock &operator=(Warlock const &other);
+
+		std::map<std::string, ASpell *> arr;
+};
