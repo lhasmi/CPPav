@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ATarget.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lhasmi <lhasmi@student.42heilbronn.de>     +#+  +:+       +#+        */
+/*   By: lhasmi <lhasmi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 20:50:02 by lhasmi            #+#    #+#             */
-/*   Updated: 2023/12/05 21:25:42 by lhasmi           ###   ########.fr       */
+/*   Updated: 2023/12/07 17:58:03 by lhasmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ ATarget::ATarget(ATarget const& copy){
 	*this = copy;
 }
 
-ATarget &ATarget::operator=(ATarget const& assignment){
+ATarget &ATarget::operator=(ATarget const& assignment)
+{
 	if(this == &assignment)
 		return(*this);
 	this->type = assignment.type;
@@ -29,7 +30,7 @@ ATarget &ATarget::operator=(ATarget const& assignment){
 }
 
 ATarget::~ATarget(){}
-		
+
 std::string const& ATarget::getType()const{
 	return(this->type);
 }
@@ -37,4 +38,3 @@ std::string const& ATarget::getType()const{
 void ATarget::getHitBySpell(ASpell const& aspell_ref) const{
 	std::cout << this->type << " has been "<< aspell_ref.getEffects()<<"!"<<endl;
 }
-
