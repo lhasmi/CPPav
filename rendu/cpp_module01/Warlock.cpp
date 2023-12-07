@@ -6,7 +6,7 @@
 /*   By: lhasmi <lhasmi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 19:14:04 by lhasmi            #+#    #+#             */
-/*   Updated: 2023/12/07 20:14:03 by lhasmi           ###   ########.fr       */
+/*   Updated: 2023/12/07 20:20:36 by lhasmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,16 +50,24 @@ void Warlock::introduce() const{
 }
 
 // * learnSpell, takes a pointer to ASpell, that makes the Warlock learn a spell
-void learnSpell(ASpell *aspell_pt);
+void Warlock::learnSpell(ASpell *aspell_pt){
+	if(aspell_pt)
+		arr.insert(std::pair<std::string, ASpell *>(spell_ptr->getName(), spell_ptr->clone()));
+}
 // * forgetSpell, takes a string corresponding a to a spell's name, and makes the
 //   Warlock forget it. If it's not a known spell, does nothing.
-void forgetSpell(std::string spell_name);
+void Warlock::forgetSpell(std::string spell_name){
+	
+}
+
 // * launchSpell, takes a string (a spell name) and a reference to ATarget, that
 //   launches the spell on the selected target. If it's not a known spell, does
 //   nothing.
-void launchSpell(std::string  spell_name, ATarget const & atarget_ref);
-
-std::map<std::string, ASpell *> arr;
+void Warlock::launchSpell(std::string  spell_name, ATarget const & atarget_ref){
+	ASpell * spell = arr[spell_name];
+	if(spell)
+		spell->launch(target_ref);
+}
 
 
 
