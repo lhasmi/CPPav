@@ -6,12 +6,17 @@
 /*   By: lhasmi <lhasmi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 19:14:04 by lhasmi            #+#    #+#             */
-/*   Updated: 2023/12/10 17:05:13 by lhasmi           ###   ########.fr       */
+/*   Updated: 2023/12/10 18:50:30 by lhasmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Warlock.hpp"
+// Modify the Warlock, now, make it have a spell book that will be created with
+// him and destroyed with him. Also make his learnSpell and forgetSpell functions
+// call those of the spell book.
 
+// The launchSpell function will have to use the SpellBook to create the spell
+// it's attempting to launch.
 Warlock::Warlock(std::string const & name, std::string const & title): name(name), title(title)
 {
 	std::cout << name << ": This looks like another boring day."<< std::endl;
