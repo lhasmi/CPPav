@@ -2,6 +2,8 @@
 
 #include<iostream>
 #include<string>
+#include <iterator> 
+#include<map>
 // Add to the Warlock the following member functions:
 
 // * learnSpell, takes a pointer to ASpell, that makes the Warlock learn a spell
@@ -13,6 +15,9 @@
 
 // You will need a new attribute to store the spells your Warlock knows. Several
 // types fit the bill, it's up to you to choose the best one.
+
+#include "ASpell.hpp"
+#include "ATarget.hpp"
 
 class Warlock
 {
@@ -26,6 +31,9 @@ class Warlock
 		void setTitle(std::string const & other_title);
 		void introduce() const;
 
+		void learnSpell(ASpell * aspell_pt);
+		void forgetSpell(std::string &spell_name);
+		void launchSpell(std::string &spell_name, ATarget const & atarget_ref);
 	private:
 		std::string name;
 		std::string title;
@@ -33,4 +41,6 @@ class Warlock
 		Warlock();
 		Warlock(Warlock const & copy);
 		Warlock &operator=(Warlock const & deep_copy);
+
+		std::map<std::string, ASpell *>arr_map;
 };
